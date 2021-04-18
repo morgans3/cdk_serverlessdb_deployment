@@ -11,7 +11,7 @@ import codebuild = require("@aws-cdk/aws-codebuild");
 import { StackProps } from "@aws-cdk/core";
 import { Duration } from "@aws-cdk/aws-cloudfront/node_modules/@aws-cdk/core/lib/duration";
 import * as secrets from "@aws-cdk/aws-cloudfront/node_modules/@aws-cdk/core/lib/secret-value";
-import { cleanseBucketName } from "./microservices";
+import { cleanseBucketName } from "./services";
 
 export interface StaticSiteProps extends StackProps {
   domainName: string;
