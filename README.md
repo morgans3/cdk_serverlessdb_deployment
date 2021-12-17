@@ -1,6 +1,10 @@
-# CDK Project for Deploying Serverless Databases (Aurora, DynamoDB), with API layer
+# CDK Project for Deploying Serverless Databases (DynamoDB) with an API layer
 
 Cloud Development Kit project for managing AWS Services for deploying Serverless Databases and API Layer
+
+## Architecture
+
+![Diagram](diagram.png)
 
 ## Pre-requisites
 
@@ -15,7 +19,11 @@ Cloud Development Kit project for managing AWS Services for deploying Serverless
 - Update lib/services.ts file to customise the db schema, api methods and the domain you wish to host the endpoints
 - Run `cdk bootstrap` to bootstrap your AWS account
 - Run `cdk deploy` to deploy all the resources
+- During deployment the owner of your custom domain will need to approve the SSL certificate request, which will have been sent to them via email
+- After deployment, your custom domain provider will need to include a new A record pointing to your newly provisioned API Gateway domain name. Found here: https://eu-west-2.console.aws.amazon.com/apigateway/main/publish/domain-names?region=eu-west-2 (change region if outside eu-west-2)
 - Once completed you will be able to make API calls to your new endpoints. You can check the progress of the deployment in AWS CloudFormation or test the new endpoints via Postman or in AWS API Gateway
+
+Note: It may take up approximately 15 minutes for your changes to your custom domain to be made in the Global DNS records. You can successfully test your API endpoints and Authorizers in the API Gateway web console as soon as the deployment has finished
 
 ## Useful commands
 
@@ -25,6 +33,10 @@ Cloud Development Kit project for managing AWS Services for deploying Serverless
 - `cdk deploy` deploy this stack to your default AWS account/region
 - `cdk diff` compare deployed stack with current state
 - `cdk synth` emits the synthesized CloudFormation template
+
+### Generate a CDK-DIA diagram PNG:
+
+`npx cdk-dia`
 
 ### Common Issues
 
